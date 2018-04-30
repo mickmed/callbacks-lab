@@ -59,7 +59,7 @@ There are many events that we can listen for and respond to in JavaScript. Broad
 
 **Key Events**
 
-- keypress	
+- keypress
 - keydown
 - keyup
 
@@ -81,17 +81,17 @@ First we target the button:
 	<summary>If a button element has a class of 'js-button', how would we capture this from the DOM?</summary>
 
 ```js
-const button = document.querySelector('.js-button')
+const button = document.querySelector('.js-button');
 ```
 </details>
 
 
-Once we have the element from the DOM, we can tell JS to listen for an event: 
+Once we have the element from the DOM, we can tell JS to listen for an event:
 
 ```js
 // This is the event listener
 
-button.addEventListener('click', handleClickEvent)
+button.addEventListener('click', handleClickEvent);
 
 // first argument: event
 // second argument: callback function
@@ -99,21 +99,21 @@ button.addEventListener('click', handleClickEvent)
 
 That completes step 1 of working with events - we're now listening for a click event on our button!
 
-For step two, we need to define the function that will be called whenever this event is emitted. This is just a function, but it has a special name due to how it's being used: a **callback** function: 
+For step two, we need to define the function that will be called whenever this event is emitted. This is just a function, but it has a special name due to how it's being used: a **callback** function:
 
 ```js
-function handleClickEvent(){
-  console.log('I was clicked!')
+function handleClickEvent() {
+  console.log('I was clicked!');
 }
 ```
 
-All together, our code looks like this: 
+All together, our code looks like this:
 
 ```js
-const button = document.querySelector('.js-button')
-button.addEventListener('click', handleClickEvent)
+const button = document.querySelector('.js-button');
+button.addEventListener('click', handleClickEvent);
 
-function handleClickEvent(){
+function handleClickEvent() {
   console.log('I was clicked!')
 }
 ```
@@ -121,10 +121,11 @@ function handleClickEvent(){
 Or we could use an anonymous callback function:
 
 ```js
-const button = document.querySelector('.js-button')
+const button = document.querySelector('.js-button');
+
 button.addEventListener('click', function() {
-  console.log('I was clicked!')
-})
+  console.log('I was clicked!');
+});
 ```
 
 The code above first gets an element from the DOM. It then attaches an event listener to that `button` element with the `addEventListener()` method. The `addEventListener()` method takes two arguments: (1) the event we want to listen for and (2) the function that should be called whenever that event is invoked. In the case of the code above, we're saying we want to listen for `click` events on our `button`, and whenever someone does click on our button, call the `handleClickEvent()` function.
@@ -142,8 +143,8 @@ _Scenario_: Let's say we have a function called `doWork()` that takes a long tim
 You might think that it is as simple as putting the two functions after each other:
 
 ```js  
-doWork()
-getPaid()
+doWork();
+getPaid();
 ```
 
 In some languages this will work, and the process will hang until `doWork` finishes - but not in JavaScript. JavaScript is an asynchronous programming language, which simply means things won't necessarily happen one after the other. Instead, what would likely happen is `doWork` would get called and start it's process, then `getPaid` would get called and then sometime later, `doWork` would finish running.
@@ -153,11 +154,11 @@ This is where callbacks come in!
 We can imagine the implementation of `doWork` as looking something like this:
 
 ```js
-function doWork( callback ) {
+function doWork(callback) {
 
 	// code for whatever it is that takes so long ...
-	
-	callback()
+
+	callback();
 }
 
 ```
@@ -165,53 +166,43 @@ function doWork( callback ) {
 Making sure `getPaid` is called after `doWork` is finished is now as simple as passing it in to `doWork` as an argument:
 
 ```js
-doWork( getPaid )
+doWork(getPaid);
 ```
 
-Note that we're passing a *reference* to `getPaid` in to `doWork`. 
+Note that we're passing a *reference* to `getPaid` in to `doWork`.
 
 <details>
 	<summary>What is the difference between referencing and invoking a function?</summary>
-	Invoking will actually run the function; referencing is just passing it around inside our program. 
+	Invoking will actually run the function; referencing is just passing it around inside our program.
 </details>
 
 <details>
 	<summary>Where does `getPaid` actually get invoked?</summary>
-	It will be invoked inside of `doWork`, at the very end of that functions' process or work. 
+	It will be invoked inside of `doWork`, at the very end of that functions' process or work.
 </details>
 
 ## You Do: Practice (10 minutes / 0:45)
 
 > 5 minutes exercise. 5 minutes review.
 
-Go to this [repository](../../event-listener-practice) and follow the instructions.
-
-## Break (10 minutes / 0:55)
-
-## We Do: Color Scheme Switcher (15 min / 1:10)
-
-10 min practice / 5 min review
- 
- > We will build on the Color Scheme Switcher as we work through the following sections of the lesson.
- 
- Visit this [repository](https://git.generalassemb.ly/ga-wdi-exercises/color-scheme-switcher) and follow along!
+Go to this [repository](https://git.generalassemb.ly/wdi-nyc-tesseract/event-listener-practice). Fork, clone and follow the instructions.
 
 ## The Event Object (10 min / 1:20)
 
 Comment out the code you just did in the Color Scheme Switcher exercise and put the following...
 
 ```js
-var buttons = document.querySelector('li a')
-    
-buttons.addEventListener('click', handleClickEvent)
+var buttons = document.querySelector('li a');
 
-function handleClickEvent (evt) {
-    console.log('I was clicked!')
-    console.log(evt)
+buttons.addEventListener('click', handleClickEvent);
+
+function handleClickEvent (e) {
+  console.log('I was clicked!');
+  console.log(e);
 }
 ```
 
-The `evt` stands for `event`.
+The `e` stands for `event`.
 
 > The reason we're not actually using `event` is that it's a "reserved word" in Javascript, like "if" and "return".
 
@@ -219,7 +210,7 @@ The `evt` stands for `event`.
 
 Open up your event listener practice exercise and modify your event handler to accept the event object as a parameter. Then print it to the console.
 
-With your partner, spend three minutes clicking the button and exploring what properties the event (or `evt`) object contains. Look for...
+With your partner, spend three minutes clicking the button and exploring what properties the event (or `e`) object contains. Look for...
 
 * A way to figure out what element was clicked on.
 * A way to tell the position of the mouse when it was clicked.
@@ -227,7 +218,7 @@ With your partner, spend three minutes clicking the button and exploring what pr
 
 ### Preventing Default Behavior (5 min / 1:30)
 
-The event object is useful to us as programmers for many reasons - one of those reasons is preventing the default browser behavior for a certain event. 
+The event object is useful to us as programmers for many reasons - one of those reasons is preventing the default browser behavior for a certain event.
 
 A very common use case for this is when the user clicks on an anchor element (`<a>`) but we want to control what happens in our code, rather than rely on what the browser tries to do in response to this event by default (navigate to another location).
 
@@ -240,16 +231,16 @@ To prevent the default behavior, we have a special method inside the event objec
 
 <details>
 	<summary> Answer </summary>
-	
+
 ```js
 var button = document.querySelector('.js-button');
 
-button.addEventListener("click", handleClickEvent);
+button.addEventListener('click', handleClickEvent);
 
-function handleClickEvent ( evt ){
-	evt.preventDefault();
-  console.log("I was clicked!")
-  console.log(evt)
+function handleClickEvent(e) {
+	e.preventDefault();
+  console.log('I was clicked!');
+  console.log(e);
 }
 ```
 
@@ -263,7 +254,7 @@ Given the following scenario and what we've learned about events so far, what wo
 
 One way to go about this is to set an individual event listener on each link, as we did in the color switcher example above.
 
-Another way to go about this is to take advantage of event propagation. There are three phases of **event propagation**: capture phase, target phase, and bubbling phase. 
+Another way to go about this is to take advantage of event propagation. There are three phases of **event propagation**: capture phase, target phase, and bubbling phase.
 
 When an event (e.g. click) occurs, all nodes up the DOM tree are notified, beginning at the window level and working its way down the DOM branch to the event target. This is the capture phase. Once the propagation reaches the event target, all event listeners on the target will be triggered. Then, event propagation continues back up the DOM tree in the event bubbling phase. All three of these phases are very nearly instantaneous.
 
@@ -275,17 +266,15 @@ Going back to our example with the `<nav>` element containing links: Given event
 
 To trigger specific outcomes for each event target child element, you can use a conditional (if/else) or switch statement to invoke the intended function for each the event target.
 
-### We do: Refactor Color Switcher (10 min / 1:55)
+### We do: Color Switcher (10 min)
 
-Let's revisit the color switcher example together and find a way to put have just one event listener.
+Let's write use javascript event listeners to finish the color switcher code and get the buttons working.
 
-## Break (10 minutes / 2:05)
+## You Do: Traffic Light and DOTS: The Game (45 minutes)
 
-## We Do: DOTS: The Game (25 minutes / 2:30)
+1. In the traffic light directory, implement the JavaScript required to get the traffic light to illuminate the correct light when the corresponding button is pressed. **Note**: Only one light should be on at a time!
 
-Visit this [repository](https://git.generalassemb.ly/ga-wdi-exercises/event-listener-demo) and follow the instructions.
-
-## Homework: [Pixart](https://git.generalassemb.ly/ga-wdi-exercises/pixart_js)
+2. Visit this [repository](https://git.generalassemb.ly/wdi-nyc-tesseract/event-listener-demo) and follow the instructions.
 
 ## Additional Reading
 - [Build a Drum Kit in Vanilla JS](https://www.youtube.com/watch?v=VuN8qwZoego)
