@@ -24,7 +24,7 @@ The **DOM** not only lets us manipulate the document (or webpage) using JavaScri
 
 We can **listen** for certain kinds of user-driven events, such as clicking a button, entering data into a form, keypresses and many, many more.
 
-## Events (5 minutes / 0:10)
+## Events
 
 - In plain English, what is an event?
 - What might an event in the context of a web page be?
@@ -39,7 +39,7 @@ We instead will prefer to keep JavaScript out of HTML files and use JS to target
 
 For the time being, when we talk about "interesting things that have taken place" we are talking about user interactions with the page.
 
-### Types of Events (5 minutes / 0:15)
+### Types of Events
 
 There are many events that we can listen for and respond to in JavaScript. Broadly speaking, we can divide these events in to four categories:
 
@@ -69,7 +69,7 @@ There are many events that we can listen for and respond to in JavaScript. Broad
 - change
 - focus
 
-### Setting Up An Event Listener (15 minutes / 0:30)
+### Setting Up An Event Listener
 
 Now that we have an idea of what DOM events are in theory, let's wire up our code and begin interacting with them. There are two steps to working with events: (1) Listening for an event and (2) Responding to an event.
 
@@ -130,7 +130,7 @@ button.addEventListener('click', function() {
 
 The code above first gets an element from the DOM. It then attaches an event listener to that `button` element with the `addEventListener()` method. The `addEventListener()` method takes two arguments: (1) the event we want to listen for and (2) the function that should be called whenever that event is invoked. In the case of the code above, we're saying we want to listen for `click` events on our `button`, and whenever someone does click on our button, call the `handleClickEvent()` function.
 
-## Aside: Callbacks -  Calling vs. Referencing (5 minutes / 0:35)
+## Aside: Callbacks -  Calling vs. Referencing
 
 As a quick aside, let's answer the question, "What is a callback function?"
 
@@ -181,13 +181,8 @@ Note that we're passing a *reference* to `getPaid` in to `doWork`.
 	It will be invoked inside of `doWork`, at the very end of that functions' process or work.
 </details>
 
-## You Do: Practice (10 minutes / 0:45)
 
-> 5 minutes exercise. 5 minutes review.
-
-Go to this [repository](https://git.generalassemb.ly/wdi-nyc-tesseract/event-listener-practice). Fork, clone and follow the instructions.
-
-## The Event Object (10 min / 1:20)
+## The Event Object
 
 Comment out the code you just did in the Color Scheme Switcher exercise and put the following...
 
@@ -206,7 +201,7 @@ The `e` stands for `event`.
 
 > The reason we're not actually using `event` is that it's a "reserved word" in Javascript, like "if" and "return".
 
-### Explore The Event Object (5 min / 1:25)
+### Explore The Event Object
 
 Open up your event listener practice exercise and modify your event handler to accept the event object as a parameter. Then print it to the console.
 
@@ -216,7 +211,7 @@ With your partner, spend three minutes clicking the button and exploring what pr
 * A way to tell the position of the mouse when it was clicked.
 * One other piece of useful or interesting information.
 
-### Preventing Default Behavior (5 min / 1:30)
+### Preventing Default Behavior
 
 The event object is useful to us as programmers for many reasons - one of those reasons is preventing the default browser behavior for a certain event.
 
@@ -246,7 +241,7 @@ function handleClickEvent(e) {
 
 </details>
 
-### Event Propagation (15 min / 1:45)
+### Event Propagation
 
 Given the following scenario and what we've learned about events so far, what would you do?
 
@@ -266,15 +261,15 @@ Going back to our example with the `<nav>` element containing links: Given event
 
 To trigger specific outcomes for each event target child element, you can use a conditional (if/else) or switch statement to invoke the intended function for each the event target.
 
-### We do: Color Switcher (10 min)
+### We do: Color Switcher
 
 Let's write use javascript event listeners to finish the color switcher code and get the buttons working.
 
-## You Do: Traffic Light and DOTS: The Game (45 minutes)
+## You Do: Traffic Light and DOTS: The Game
 
 1. In the traffic light directory, implement the JavaScript required to get the traffic light to illuminate the correct light when the corresponding button is pressed. **Note**: Only one light should be on at a time!
 
-2. Visit this [repository](https://git.generalassemb.ly/wdi-nyc-tesseract/event-listener-demo) and follow the instructions.
+2. Visit this [repository](https://git.generalassemb.ly/wdi-nyc-tesseract/event-listener-lab) and follow the instructions.
 
 ## Additional Reading
 - [Build a Drum Kit in Vanilla JS](https://www.youtube.com/watch?v=VuN8qwZoego)
