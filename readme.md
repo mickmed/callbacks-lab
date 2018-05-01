@@ -16,7 +16,7 @@
 * Pass a named function as a callback to **another** function
 * Pass an anonymous function as a callback to another function
 
-## Framing (5 minutes / 0:05)
+## Framing
 
 So far, we have needed to use the REPL in the browser console to interact with our programs. This is asking a bit much of our users. Instead we would like to write code to respond to user interactions with the webpage.
 
