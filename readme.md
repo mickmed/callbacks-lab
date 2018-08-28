@@ -269,7 +269,7 @@ Let's write use javascript event listeners to finish the color switcher code and
 
 1. In the traffic light directory, implement the JavaScript required to get the traffic light to illuminate the correct light when the corresponding button is pressed. **Note**: Only one light should be on at a time!
 
-2. Visit this [repository](https://git.generalassemb.ly/wdi-nyc-arcadia/event-listener-lab) and follow the instructions.
+2. Visit this [repository](https://git.generalassemb.ly/wdi-nyc-arcadia/event-listener-demo) and follow the instructions.
 
 ## Additional Reading
 - [Build a Drum Kit in Vanilla JS](https://www.youtube.com/watch?v=VuN8qwZoego)
